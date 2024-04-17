@@ -10,7 +10,7 @@ namespace OWASP.WebGoat.NET.App_Code.DB
     public class DbProviderFactory
     {
         private static ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         public static IDbProvider Create(ConfigFile configFile)
         {
             configFile.Load();

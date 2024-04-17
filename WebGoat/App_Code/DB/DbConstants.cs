@@ -14,7 +14,7 @@ namespace OWASP.WebGoat.NET.App_Code.DB
         public const string KEY_DATABASE = "database";
         public const string KEY_UID = "uid";
         public const string KEY_PWD = "pwd";
-            
+
         //DB Types
         public const string DB_TYPE_MYSQL = "MySql";
         public const string DB_TYPE_SQLITE = "Sqlite";

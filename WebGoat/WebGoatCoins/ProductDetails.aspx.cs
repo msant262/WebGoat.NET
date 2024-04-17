@@ -14,7 +14,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
     {
 
         private IDbProvider du = Settings.CurrentDbProvider;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
@@ -23,9 +23,9 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
                 LoadComments();
 
             //TODO: broken 
-            if (!Page.IsPostBack) 
+            if (!Page.IsPostBack)
             {
-                
+
                 DataSet ds = du.GetCatalogData();
                 ddlItems.DataSource = ds.Tables[0];
                 ddlItems.DataTextField = "productName";
@@ -43,7 +43,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
                 lblMessage.Visible = true;
                 LoadComments();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lblMessage.Text = ex.Message;
                 lblMessage.Visible = true;

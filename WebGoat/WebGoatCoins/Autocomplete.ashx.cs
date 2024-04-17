@@ -13,8 +13,8 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
     /// </summary>
     public class Autocomplete : IHttpHandler
     {
-    
-    
+
+
         private IDbProvider du = Settings.CurrentDbProvider;
 
         public void ProcessRequest(HttpContext context)
@@ -23,7 +23,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
             //context.Response.Write("Hello World");
 
             string query = context.Request["query"];
-            
+
             DataSet ds = du.GetCustomerEmails(query);
             string json = Encoder.ToJSONSAutocompleteString(query, ds.Tables[0]);
 
@@ -36,7 +36,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
             {
                 context.Response.ContentType = "text/plain";
                 context.Response.Write("");
-            
+
             }
         }
 

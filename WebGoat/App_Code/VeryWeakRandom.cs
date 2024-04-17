@@ -7,7 +7,7 @@ namespace OWASP.WebGoat.NET.App_Code
         private uint _seed = 7;
         private uint _helper = 1;
 
-        public VeryWeakRandom() {}
+        public VeryWeakRandom() { }
 
         public VeryWeakRandom(uint seed)
         {

@@ -200,7 +200,7 @@ namespace OWASP.WebGoat.NET.App_Code
 
         public static string ToJSONSAutocompleteString(string query, DataTable dt)
         {
-            char[] badvalues = { '[', ']', '{', '}'};
+            char[] badvalues = { '[', ']', '{', '}' };
 
             foreach (char c in badvalues)
                 query = query.Replace(c, '#');
@@ -209,14 +209,14 @@ namespace OWASP.WebGoat.NET.App_Code
 
             sb.Append("{\nquery:'" + query + "',\n");
             sb.Append("suggestions:[");
-            
+
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 DataRow row = dt.Rows[i];
                 string email = row[0].ToString();
                 sb.Append("'" + email + "',");
             }
-            
+
             sb = new StringBuilder(sb.ToString().Substring(0, sb.ToString().Length - 1));
             sb.Append("],\n");
             sb.Append("data:" + sb.ToString().Substring(sb.ToString().IndexOf('['), (sb.ToString().LastIndexOf(']') - sb.ToString().IndexOf('[')) + 1) + "\n}");

@@ -10,17 +10,17 @@ using OWASP.WebGoat.NET.App_Code;
 
 namespace OWASP.WebGoat.NET
 {
-	public partial class SQLInjection : System.Web.UI.Page
-	{
-    
+    public partial class SQLInjection : System.Web.UI.Page
+    {
+
         private IDbProvider du = Settings.CurrentDbProvider;
-        
-		protected void Page_Load (object sender, EventArgs e)
-		{
 
-		}
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-		protected void btnFind_Click(object sender, EventArgs e)
+        }
+
+        protected void btnFind_Click(object sender, EventArgs e)
         {
             string name = txtName.Text;
             DataSet ds = du.GetEmailByName(name);
@@ -30,6 +30,6 @@ namespace OWASP.WebGoat.NET
                 grdEmail.DataSource = ds.Tables[0];
                 grdEmail.DataBind();
             }
-		}
-	}
+        }
+    }
 }

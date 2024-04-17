@@ -10,11 +10,11 @@ using OWASP.WebGoat.NET.App_Code;
 
 namespace OWASP.WebGoat.NET
 {
-	public partial class StoredXSS : System.Web.UI.Page
-	{
+    public partial class StoredXSS : System.Web.UI.Page
+    {
         private IDbProvider du = Settings.CurrentDbProvider;
-        
-		protected void Page_Load (object sender, EventArgs e)
+
+        protected void Page_Load(object sender, EventArgs e)
         {
             lblMessage.Visible = false;
             txtEmail.Enabled = true;
@@ -24,7 +24,7 @@ namespace OWASP.WebGoat.NET
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
-		{
+        {
             try
             {
                 string error_message = du.AddComment("user_cmt", txtEmail.Text, txtComment.Text);
@@ -37,7 +37,7 @@ namespace OWASP.WebGoat.NET
                 lblMessage.Text = ex.Message;
                 lblMessage.Visible = true;
             }
-		}
+        }
 
         void LoadComments()
         {
@@ -64,5 +64,5 @@ namespace OWASP.WebGoat.NET
             }
             lblComments.Text = comments;
         }
-	}
+    }
 }

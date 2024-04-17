@@ -10,7 +10,7 @@ namespace OWASP.WebGoat.NET.App_Code
     public class Util
     {
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         public static int RunProcessWithInput(string cmd, string args, string input)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
@@ -29,7 +29,8 @@ namespace OWASP.WebGoat.NET.App_Code
                 process.EnableRaisingEvents = true;
                 process.StartInfo = startInfo;
 
-                process.OutputDataReceived += (sender, e) => {
+                process.OutputDataReceived += (sender, e) =>
+                {
                     if (e.Data != null)
                         log.Info(e.Data);
                 };
@@ -42,7 +43,7 @@ namespace OWASP.WebGoat.NET.App_Code
 
                 AutoResetEvent are = new AutoResetEvent(false);
 
-                process.Exited += (sender, e) => 
+                process.Exited += (sender, e) =>
                 {
                     Thread.Sleep(1000);
                     are.Set();
@@ -68,16 +69,16 @@ namespace OWASP.WebGoat.NET.App_Code
                         process.StandardInput.WriteLine(replaced);
                     }
                 }
-    
+
                 process.StandardInput.Close();
-    
+
 
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
-    
+
                 //NOTE: Looks like we have a mono bug: https://bugzilla.xamarin.com/show_bug.cgi?id=6291
                 //have a wait time for now.
-                
+
                 are.WaitOne(10 * 1000);
 
                 if (process.HasExited)

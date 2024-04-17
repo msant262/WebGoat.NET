@@ -8,7 +8,7 @@ namespace OWASP.WebGoat.NET.App_Code
     public class WeakMessageDigest
     {
         private static readonly ASCIIEncoding ascii = new ASCIIEncoding();
-        
+
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public static string GenerateWeakDigest(string msg)
@@ -17,7 +17,7 @@ namespace OWASP.WebGoat.NET.App_Code
 
             byte[] bytes = new byte[tokens.Length];
 
-            for(int i=0; i < tokens.Length; i++)
+            for (int i = 0; i < tokens.Length; i++)
             {
                 string token = tokens[i];
                 bytes[i] = GenByte(token);
@@ -35,11 +35,11 @@ namespace OWASP.WebGoat.NET.App_Code
             int val = 0;
             byte bVal;
 
-            foreach(char c in word)
-                val += (byte) c;
+            foreach (char c in word)
+                val += (byte)c;
 
             //NOTE: Need to be between 32 and 126 in the ASCII table to be printable
-            bVal = (byte) (val % (127 - 32 -1) + 33);
+            bVal = (byte)(val % (127 - 32 - 1) + 33);
 
             return bVal;
         }
@@ -48,7 +48,7 @@ namespace OWASP.WebGoat.NET.App_Code
         {
             StringBuilder strBuild = new StringBuilder();
 
-            foreach(byte b in bytes)
+            foreach (byte b in bytes)
                 strBuild.AppendFormat("{0},", b);
 
             return strBuild.ToString();
@@ -56,4 +56,4 @@ namespace OWASP.WebGoat.NET.App_Code
     }
 
 }
- 
+

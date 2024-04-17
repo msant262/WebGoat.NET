@@ -21,21 +21,21 @@ namespace OWASP.WebGoat.NET
             ReadXml();
 
             gvUsers.DataSource = users.ToArray();
-           
+
             gvUsers.DataBind();
 
-/*<?xml version="1.0" standalone="yes"?>
-<users>
-  <user>
-    <name>Todd Smith</name>
-    <email>todd@example.com</email>
-  </user>
-  <user>
-    <name>Al Thompson</name>
-    <email>al@example.com</email>
-  </user>
-</users>
-*/
+            /*<?xml version="1.0" standalone="yes"?>
+            <users>
+              <user>
+                <name>Todd Smith</name>
+                <email>todd@example.com</email>
+              </user>
+              <user>
+                <name>Al Thompson</name>
+                <email>al@example.com</email>
+              </user>
+            </users>
+            */
 
             //Need to add lesson!
             if (Request.QueryString["name"] != null && Request.QueryString["email"] != null)
@@ -61,7 +61,7 @@ namespace OWASP.WebGoat.NET
 
         private void WriteXML()
         {
-            string xml = "<?xml version=\"1.0\" standalone=\"yes\"?>"+ Environment.NewLine +"<users>" + Environment.NewLine;
+            string xml = "<?xml version=\"1.0\" standalone=\"yes\"?>" + Environment.NewLine + "<users>" + Environment.NewLine;
             foreach (XmlUser user in users)
             {
                 xml += "<user>" + Environment.NewLine;
@@ -69,7 +69,7 @@ namespace OWASP.WebGoat.NET
                 xml += "<email>" + user.Email + "</email>" + Environment.NewLine;
                 xml += "</user>" + Environment.NewLine;
             }
-            xml += "</users>" +Environment.NewLine;
+            xml += "</users>" + Environment.NewLine;
 
             XmlTextWriter writer = new XmlTextWriter(Server.MapPath("/App_Data/XmlInjectionUsers.xml"), Encoding.UTF8);
             writer.WriteRaw(xml);
@@ -79,7 +79,7 @@ namespace OWASP.WebGoat.NET
 
     public class XmlUser
     {
-        public string Name  { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
 
         public XmlUser(string name, string email)

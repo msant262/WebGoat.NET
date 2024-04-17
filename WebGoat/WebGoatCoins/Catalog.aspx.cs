@@ -13,7 +13,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
     public partial class Catalog : System.Web.UI.Page
     {
         private IDbProvider du = Settings.CurrentDbProvider;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             DataSet ds = du.GetProductsAndCategories();
@@ -32,7 +32,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
                     lblOutput.Text += "</div>\n";
                 }
             }
-            
+
 
             /*
             foreach(DataRow row in ds.Tables["products"].Rows)

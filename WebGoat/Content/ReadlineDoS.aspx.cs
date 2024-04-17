@@ -15,7 +15,7 @@ namespace OWASP.WebGoat.NET
         {
             lblFileContent.Text = String.Empty;
             Stream fileContents = file1.PostedFile.InputStream;
-        
+
             using (StreamReader reader = new StreamReader(fileContents))
             {
                 while (!reader.EndOfStream)

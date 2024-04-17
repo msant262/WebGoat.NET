@@ -19,7 +19,7 @@ namespace OWASP.WebGoat.NET
                 BasicConfigurator.Configure();
             else
                 XmlConfigurator.Configure();
-            
+
             Settings.Init(Server);
         }
 

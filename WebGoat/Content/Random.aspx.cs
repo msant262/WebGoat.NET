@@ -16,14 +16,14 @@ namespace OWASP.WebGoat.NET.Content
             if (Session["Random"] == null)
                 Reset();
 
-            IList<uint> numbers = (IList<uint>) Session["Numbers"];
+            IList<uint> numbers = (IList<uint>)Session["Numbers"];
             lblSequence.Text = "Sequence: " + Print(numbers);
         }
 
         public void btnOneMore_Click(object sender, EventArgs args)
         {
-            WeakRandom rnd = (WeakRandom) Session["Random"];
-            IList<uint> numbers = (IList<uint>) Session["Numbers"];
+            WeakRandom rnd = (WeakRandom)Session["Random"];
+            IList<uint> numbers = (IList<uint>)Session["Numbers"];
 
             numbers.Add(rnd.Next(MIN, MAX));
 
@@ -32,7 +32,7 @@ namespace OWASP.WebGoat.NET.Content
 
         public void btnGo_Click(object sender, EventArgs args)
         {
-            WeakRandom rnd = (WeakRandom) Session["Random"];
+            WeakRandom rnd = (WeakRandom)Session["Random"];
 
             uint next = rnd.Peek(MIN, MAX);
 
@@ -46,7 +46,7 @@ namespace OWASP.WebGoat.NET.Content
         {
             Reset();
 
-            IList<uint> numbers = (IList<uint>) Session["Numbers"];
+            IList<uint> numbers = (IList<uint>)Session["Numbers"];
             lblSequence.Text = "Sequence: " + Print(numbers);
         }
 
@@ -54,7 +54,7 @@ namespace OWASP.WebGoat.NET.Content
         {
             StringBuilder strBuilder = new StringBuilder();
 
-            foreach(uint n in numbers)
+            foreach (uint n in numbers)
                 strBuilder.AppendFormat("{0}, ", n);
 
             return strBuilder.ToString();
@@ -64,11 +64,11 @@ namespace OWASP.WebGoat.NET.Content
         {
             Session["Random"] = new WeakRandom();
 
-            var rnd = (WeakRandom) Session["Random"];
+            var rnd = (WeakRandom)Session["Random"];
 
             IList<uint> numbers = new List<uint>();
 
-            for(int i=0; i<INIT_NUMBERS; i++)
+            for (int i = 0; i < INIT_NUMBERS; i++)
                 numbers.Add(rnd.Next(MIN, MAX));
 
             Session["Numbers"] = numbers;

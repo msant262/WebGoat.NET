@@ -17,10 +17,10 @@ namespace OWASP.WebGoat.NET
 
         enum WG_Hash
         {
-            Sha1=1,
+            Sha1 = 1,
             Sha256
         };
-            
+
         private string hardCodedKey = "key";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -34,35 +34,35 @@ namespace OWASP.WebGoat.NET
             //base64
             //sha1
             //encryption with password
-            
+
             string secret = txtString.Text;
             string key = String.IsNullOrEmpty(txtPassword.Text) ? hardCodedKey : txtPassword.Text;
-            
+
             Table t = new Table();
             t.Width = new Unit("100%");
-            
+
             t.Rows.Add(MakeRow("Custom Crypto", CustomCryptoEncrypt(secret)));
             t.Rows.Add(MakeRow("URL Encoded:", Server.UrlEncode(secret)));
             t.Rows.Add(MakeRow("Base64 Encoded:", Base64(secret)));
             t.Rows.Add(MakeRow("SHA1 Hashed:", SHA(secret, WG_Hash.Sha1)));
             t.Rows.Add(MakeRow("SHA256 Hashed:", SHA(secret, WG_Hash.Sha256)));
             t.Rows.Add(MakeRow("Rijndael Encrypted: ", Encypt(secret, key), Color.LightGreen));
-        
+
             ContentPlaceHolder cph = (ContentPlaceHolder)this.Master.FindControl("BodyContentPlaceholder");
             cph.Controls.Add(new LiteralControl("<p/>"));
             cph.Controls.Add(t);
-        
-        
+
+
         }
 
         private TableRow MakeRow(string label, string val)
         {
             TableRow row = new TableRow();
-            
+
             TableCell t1 = new TableCell();
             t1.Text = label;
             row.Cells.Add(t1);
-            
+
             TableCell t2 = new TableCell();
             t2.Text = val;
             row.Cells.Add(t2);
@@ -83,19 +83,19 @@ namespace OWASP.WebGoat.NET
             row.Cells.Add(t2);
             return row;
         }
-        
+
         private string Base64(string s)
         {
             byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(s);
             return System.Convert.ToBase64String(bytes);
         }
-        
+
         private string SHA(string s, WG_Hash hash)
         {
             byte[] bytes = System.Text.ASCIIEncoding.ASCII.GetBytes(s);
             byte[] result;
             HashAlgorithm sha = null;
-            
+
             switch (hash)
             {
                 case WG_Hash.Sha1:
@@ -129,7 +129,7 @@ namespace OWASP.WebGoat.NET
                 {
                     bytes[i] = (byte)(bytes[i] & 2);
                 }
-           
+
             }
 
             return Encoding.UTF8.GetString(bytes);
