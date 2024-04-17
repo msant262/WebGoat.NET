@@ -16,7 +16,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
     {
         private IDbProvider du = Settings.CurrentDbProvider;
         ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             PanelError.Visible = false;
@@ -37,7 +37,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
 
             if (!du.IsValidCustomerLogin(email, pwd))
             {
-                labelError.Text = "Incorrect username/password"; 
+                labelError.Text = "Incorrect username/password";
                 PanelError.Visible = true;
                 return;
             }
@@ -61,15 +61,15 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
             //set expiration date
             if (ticket.IsPersistent)
                 cookie.Expires = ticket.Expiration;
-                
+
             Response.Cookies.Add(cookie);
-            
+
             string returnUrl = Request.QueryString["ReturnUrl"];
-            
-            if (returnUrl == null) 
+
+            if (returnUrl == null)
                 returnUrl = "/WebGoatCoins/MainPage.aspx";
-                
-            Response.Redirect(returnUrl);        
+
+            Response.Redirect(returnUrl);
         }
     }
 }

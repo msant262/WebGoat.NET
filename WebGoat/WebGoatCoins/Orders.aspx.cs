@@ -14,9 +14,9 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
 {
     public partial class Orders : System.Web.UI.Page
     {
-    
+
         private IDbProvider du = Settings.CurrentDbProvider;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             int id;

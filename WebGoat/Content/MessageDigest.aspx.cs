@@ -10,7 +10,7 @@ namespace OWASP.WebGoat.NET.Content
     public partial class MessageDigest : System.Web.UI.Page
     {
         private readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         private const string MSG = "Well done! You can now consider yourself an expert hacker! Well almost. Surely this is an easy digest to break!";
 
         public void Page_Load(object sender, EventArgs args)
@@ -25,6 +25,6 @@ namespace OWASP.WebGoat.NET.Content
             log.Info(string.Format("Result for {0} is: {1}", txtBoxMsg.Text, result));
             lblResultDigest.Text = result;
         }
-    }    
+    }
 }
 

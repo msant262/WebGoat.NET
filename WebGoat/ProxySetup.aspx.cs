@@ -7,17 +7,17 @@ using System.Web.UI.WebControls;
 
 namespace OWASP.WebGoat.NET
 {
-	public partial class ProxySetup : System.Web.UI.Page
-	{
-		protected void btnReverse_Click(object sender, EventArgs e)
+    public partial class ProxySetup : System.Web.UI.Page
+    {
+        protected void btnReverse_Click(object sender, EventArgs e)
         {
-        
+
             var name = txtName.Text;
             txtName.Text = "";
             lblOutput.Text = "Thank you for using WebGoat.NET " + reverse(name);
-        
+
         }
-        
+
         private string reverse(string s)
         {
             //char[] charArray = s.ToCharArray();
@@ -25,6 +25,6 @@ namespace OWASP.WebGoat.NET
             Array.Reverse(charArray);
             return new String(charArray);
         }
-	
-	}
+
+    }
 }

@@ -12,7 +12,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
     public partial class ChangePassword : System.Web.UI.Page
     {
         private IDbProvider du = Settings.CurrentDbProvider;
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,7 +20,7 @@ namespace OWASP.WebGoat.NET.WebGoatCoins
 
         protected void ButtonChangePassword_Click(object sender, EventArgs e)
         {
-            if(txtPassword1.Text != null && txtPassword2.Text != null && txtPassword1.Text == txtPassword2.Text)
+            if (txtPassword1.Text != null && txtPassword2.Text != null && txtPassword1.Text == txtPassword2.Text)
             {
                 //get customer ID
                 string customerNumber = "";

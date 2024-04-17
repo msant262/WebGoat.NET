@@ -12,13 +12,13 @@ using OWASP.WebGoat.NET.App_Code;
 
 namespace OWASP.WebGoat.NET
 {
-	public partial class RebuildDatabase : System.Web.UI.Page
-	{	   
-		protected void Page_Load (object sender, EventArgs e)
-		{
+    public partial class RebuildDatabase : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             ConfigFile configFile = Settings.CurrentConfigFile;
 
-            if(!Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
                 dropDownDataProvider.Text = configFile.Get(DbConstants.KEY_DB_TYPE);
                 txtClientExecutable.Text = configFile.Get(DbConstants.KEY_CLIENT_EXEC);
@@ -32,16 +32,16 @@ namespace OWASP.WebGoat.NET
 
             PanelSuccess.Visible = false;
             PanelError.Visible = false;
-            
+
             PanelRebuildSuccess.Visible = false;
             PanelRebuildFailure.Visible = false;
 
-		}
+        }
 
-		protected void btnTest_Click (object sender, EventArgs e)
-		{			
+        protected void btnTest_Click(object sender, EventArgs e)
+        {
             lblOutput.Text = Settings.CurrentDbProvider.TestConnection() ? "Works!" : "Problem";
-		}
+        }
 
         protected void btnTestConfiguration_Click(object sender, EventArgs e)
         {
@@ -91,7 +91,7 @@ namespace OWASP.WebGoat.NET
 
         private void UpdateConfigFile(ConfigFile configFile)
         {
-           if (string.IsNullOrEmpty(txtServer.Text))
+            if (string.IsNullOrEmpty(txtServer.Text))
                 configFile.Remove(DbConstants.KEY_HOST);
             else
                 configFile.Set(DbConstants.KEY_HOST, txtServer.Text);
@@ -120,7 +120,7 @@ namespace OWASP.WebGoat.NET
                 configFile.Remove(DbConstants.KEY_DATABASE);
             else
                 configFile.Set(DbConstants.KEY_DATABASE, txtDatabase.Text);
-            
+
             if (string.IsNullOrEmpty(txtUserName.Text))
                 configFile.Remove(DbConstants.KEY_UID);
             else
@@ -130,8 +130,8 @@ namespace OWASP.WebGoat.NET
                 configFile.Remove(DbConstants.KEY_PWD);
             else
                 configFile.Set(DbConstants.KEY_PWD, txtPassword.Text);
-            
+
             configFile.Save();
         }
-	}
+    }
 }

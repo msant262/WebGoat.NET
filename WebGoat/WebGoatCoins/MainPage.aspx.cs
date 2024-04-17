@@ -40,10 +40,10 @@ namespace OWASP.WebGoat.NET
                     TableCell cell2 = new TableCell();
                     cell1.Text = col.ColumnName.ToString();
                     cell2.Text = row[col].ToString();
-                    
+
                     tablerow.Cells.Add(cell1);
                     tablerow.Cells.Add(cell2);
-                    
+
                     CustomerTable.Rows.Add(tablerow);
                 }
             }
@@ -57,7 +57,7 @@ namespace OWASP.WebGoat.NET
                 {
                     string filename = Path.GetFileName(FileUpload1.FileName);
                     FileUpload1.SaveAs(Server.MapPath("~/WebGoatCoins/uploads/") + filename);
-                    
+
                 }
                 catch (Exception ex)
                 {
